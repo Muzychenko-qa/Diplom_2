@@ -22,8 +22,7 @@ def create_user(generate_random_email):
     email = generate_random_email()
     user_data = UserData.CREAT_USER_DATA.copy()
     user_data["email"] = email
-    response = StellarburgersAPI.creat_user(user_data)
-    assert response.status_code == 200
+    StellarburgersAPI.creat_user(user_data)
     return email
 
 @pytest.fixture(scope="function")
@@ -33,13 +32,11 @@ def user_token(create_user):
     login_data = {"email": email, "password": UserData.DEFAULT_PASSWORD}
     login_response = StellarburgersAPI.login_user(login_data)
     token = login_response.json().get("accessToken").replace("Bearer ", "")
-    assert token is not None
     return token
 
 @pytest.fixture(scope="function")
 @allure.step("Удаление пользователя")
 def delete_user(create_user, user_token):
-    email = create_user
     headers = {'Authorization': f'Bearer {user_token}'}
     yield
     StellarburgersAPI.delete_user(headers)

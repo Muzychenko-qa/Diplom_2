@@ -1,6 +1,6 @@
 import allure
 from api import StellarburgersAPI
-from data import UserData
+from data import *
 
 class TestCreateUser:
 
@@ -12,8 +12,7 @@ class TestCreateUser:
         create_user_data["email"] = email
         request = StellarburgersAPI.creat_user(create_user_data)
         response_data = request.json()
-        print(f"Response data: {response_data}")
-        assert request.status_code == 200
+        assert request.status_code == 200 and response_data['success'] is True
         assert response_data['user']['email'] == create_user_data["email"]
         assert response_data['user']['name'] == create_user_data["name"]
 
@@ -22,11 +21,11 @@ class TestCreateUser:
     def test_create_existing_user(self):
         request = StellarburgersAPI.creat_user(UserData.EXISTING_USER_DATA)
         assert request.status_code == 403
-        assert request.json() == {"success": False, "message": "User already exists"}
+        assert request.json() == ResponseData.RESPONSE_DATA_403_1
 
     @allure.title("Создание пользователя без данных")
     @allure.description("Тест создания пользователя без данных (email/пароль/имя)")
     def test_create_user_blank_data(self):
         request = StellarburgersAPI.creat_user(UserData.BLANK_USER_DATA)
         assert request.status_code == 403
-        assert request.json() == {"success": False, "message": "Email, password and name are required fields"}
+        assert request.json() == ResponseData.RESPONSE_DATA_403_2

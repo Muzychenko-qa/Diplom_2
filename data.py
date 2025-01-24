@@ -61,3 +61,11 @@ class OrderData:
     WRONG_ORDER_INGREDIENTS_2 = {
         "ingredients": [EMPTY_INGREDIENT]
     }
+
+class ResponseData:
+
+    RESPONSE_DATA_401_1 = {'success': False, 'message': 'You should be authorised'}
+    RESPONSE_DATA_401_2 = {"success": False, "message": "email or password are incorrect"}
+    RESPONSE_DATA_400_1 = {'success': False, 'message': 'One or more ids provided are incorrect'}
+    RESPONSE_DATA_403_1 = {"success": False, "message": "User already exists"}
+    RESPONSE_DATA_403_2 = {"success": False, "message": "Email, password and name are required fields"}
