@@ -1,0 +1,1 @@
+Response data: {'success': True, 'orders': [{'_id': '678d64bf9ed280001b554016', 'ingredients': ['61c0c5a71d1f82001bdaaa7a'], 'status': 'done', 'name': 'Астероидный бургер', 'createdAt': '2025-01-19T20:46:55.657Z', 'updatedAt': '2025-01-19T20:46:56.858Z', 'number': 172037}], 'total': 172037, 'totalToday': 850}

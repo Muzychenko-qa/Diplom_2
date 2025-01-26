@@ -1,0 +1,2 @@
+Update response: 200 - {"success":true,"user":{"email":"864beard@vghux.ru","name":"New Name 393"}}
+Response data: {'success': True, 'user': {'email': '864beard@vghux.ru', 'name': 'New Name 393'}}
